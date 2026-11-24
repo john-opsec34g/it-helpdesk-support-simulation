@@ -1,1 +1,142 @@
+INFRASTRUCTURE_BASELINE.md
 
+Aura Global Solutions - IT Infrastructure Baseline
+
+1. Company Overview
+
+- Company Name: Aura Global Solutions
+- Industry: Logistics and Supply Chain Consulting
+- Total Employees: 50
+- Primary Location: London, UK (40 employees)
+- Satellite Location: Toronto, Canada (10 employees)
+
+2. Support Hours & Time Zones
+
+- London Office (Primary): Monday–Friday, 08:00–18:00 local time.
+
+   - Time Zone: Greenwich Mean Time (GMT, UTC+0) during standard time; British Summer Time (BST, UTC+1) during daylight-saving time.
+
+- Toronto Office (Satellite): Monday–Friday, 08:00–18:00 local time.
+
+   - Time Zone: Eastern Standard Time (EST, UTC-5) during standard time; Eastern Daylight Time (EDT, UTC-4) during daylight-saving time.
+
+- Note: IT support schedules and SLA response timers are configured to account for daylight-saving changes in both regions, ensuring accurate tracking of business hours.
+
+3. Implementation Strategy (Hardware Constraints)
+
+To ensure this simulation runs smoothly on a host machine with 8GB of RAM, the IT environment is divided into three operational tiers.
+
+3.1 Physically Implemented (Local Host)
+
+- The trainee's actual workstation runs Windows 10 Pro and is used for local troubleshooting, PowerShell scripting, and basic network testing.
+- The fictional company's standard employee workstations run Windows 11 Pro.
+
+3.2 Simulated Locally (Lightweight)
+
+Active Directory & Identity Management
+
+- Active Directory functionality is simulated through documentation and PowerShell scripts.
+- Local Windows account management and Local Group Policy (through "gpedit.msc") are used to practise the syntax and workflow of user provisioning and policy application.
+- Important distinction: Local accounts and Local Group Policy are fundamentally different from Active Directory Domain Services (AD DS) accounts and Domain Group Policy Objects (GPOs). This local simulation is for educational purposes and does not replicate the security boundaries, replication, or centralized management of a true domain environment.
+
+File Server
+
+- Local Windows SMB (Server Message Block) shared folders with NTFS permissions are used to simulate network drives and departmental file access.
+
+3.3 Documented / Cloud-Only
+
+Microsoft 365 Tenant
+
+- Configurations, user provisioning, and Exchange Online scenarios are documented.
+- PowerShell scripts using Microsoft Graph and Exchange Online modules demonstrate automation workflows.
+- Executing these scripts against a real Microsoft 365 tenant requires valid administrative credentials, Multi-Factor Authentication (MFA), and appropriate licensing.
+- Scripts in this repository are presented as documented simulations and code-review exercises. They are not claimed to have modified a live production environment.
+
+Security Stack
+
+- Microsoft Defender for Endpoint and Microsoft Sentinel are documented as enterprise security tools.
+- Neither product is physically deployed or running in the local simulation environment.
+
+4. Endpoint Hardware Baseline
+
+- Standard Workstations: Dell OptiPlex 7090 and HP ProDesk 600 G6.
+- Mobile/Laptops: Lenovo ThinkPad T14 and Dell Latitude 5420 for management, remote staff, and IT personnel.
+
+Operating Systems
+
+- Standard Operating System: Windows 11 Pro (25H2/26H2) - Supported versions selected for the fictional company's standard endpoints.
+- Legacy Operating System: Windows 10 Pro (22H2) - No longer deployed as a company standard. Retained in isolated virtual environments for specific legacy application compatibility testing and selected IT training exercises.
+- The trainee's actual Windows 10 Pro workstation is a separate training machine and is not presented as part of the fictional company's standard endpoint fleet.
+
+RAM Allocation
+
+- 8GB: Standard staff (HR and Operations).
+- 16GB: IT Department, Finance (for heavy Excel macros and ERP usage), and Executives.
+
+Peripherals
+
+- Standard USB keyboard and mouse.
+- Dual 24-inch monitors for Finance and IT.
+
+Printers
+
+- HP LaserJet Pro M404n (Networked, Floor 1 - Operations/HR).
+- Xerox WorkCentre 6515 (Networked, Floor 2 - Finance/IT).
+
+5. Network & Backend Infrastructure (Simulated/Documented)
+
+- Domain Name: "aura-globe.local"
+- Domain Controller: One Windows Server 2022 server hosting AD DS, DNS, and DHCP - simulated/documented.
+- File Server: One Windows Server 2022 server hosting SMB shares for departmental folders - simulated locally using Windows SMB.
+- Internet Connection: 500 Mbps fiber (primary), with 4G LTE failover.
+- VPN: Cisco AnyConnect Secure Mobility Client for remote Toronto staff and traveling consultants.
+
+6. Cloud & Security Infrastructure (Licensing Clarification)
+
+Productivity Suite: Microsoft 365 Business Standard
+
+Includes:
+
+- Exchange Online
+- Microsoft Teams
+- SharePoint
+- OneDrive
+- Office desktop applications (Word, Excel, PowerPoint, and Outlook)
+
+Endpoint Security: Microsoft Defender for Endpoint (Plan 2)
+
+- A separate enterprise security product.
+- Not included in Microsoft 365 Business Standard.
+- Documented as the company's Endpoint Detection and Response (EDR) solution.
+
+SIEM/SOC: Microsoft Sentinel
+
+- A separate, cloud-native, pay-as-you-go Security Information and Event Management (SIEM) solution.
+- Not included in Microsoft 365 Business Standard.
+- Documented as the tool used by the Systems Administrator for advanced log aggregation and threat hunting.
+
+Identity Management
+
+- Microsoft Entra ID (formerly Azure Active Directory) is documented as synchronized with on-premises Active Directory through Microsoft Entra Connect (formerly Azure AD Connect).
+
+7. Departmental Breakdown & IT Impact
+
+7.1 Human Resources (HR - 8 Employees)
+
+- Responsibilities: Recruitment, payroll, and employee relations.
+- IT Impact: High need for confidentiality, strict NTFS permissions on shared folders, and HRIS (BambooHR) access.
+
+7.2 Finance (12 Employees)
+
+- Responsibilities: Accounting, invoicing, and financial reporting.
+- IT Impact: High need for Excel performance (16GB RAM), reliable access to the ERP system (SAP Business One), and secure file backups.
+
+7.3 IT Department (3 Employees)
+
+- Responsibilities: Helpdesk, infrastructure, and security.
+- IT Impact: Requires appropriate administrative privileges, PowerShell access, and monitoring tools.
+
+7.4 Operations/Consulting (27 Employees)
+
+- Responsibilities: Core business operations and consulting services.
+- IT Impact: High need for reliable Wi-Fi, VPN connectivity for traveling staff, and general Microsoft 365 support.
